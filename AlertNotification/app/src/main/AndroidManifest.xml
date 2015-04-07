@@ -17,14 +17,27 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".BroadCastReceiverForTheWin">
+        <receiver android:name=".BroadCastReceiverForTheWin" >
             <intent-filter>
+                <action android:name="br.ufc.dc.action.BATTERY_CHANGED_TRUE" />
+                <action android:name="br.ufc.dc.action.BATTERY_CHANGED_FALSE" />
+                <action android:name="br.ufc.dc.action.AIRPLANE_MODE_TRUE" />
+                <action android:name="br.ufc.dc.action.AIRPLANE_MODE_FALSE" />
+                <action android:name="br.ufc.dc.action.ACTION_POWER_CONNECTED_TRUE" />
+                <action android:name="br.ufc.dc.action.ACTION_POWER_CONNECTED_FALSE" />
+                <action android:name="br.ufc.dc.action.ACTION_POWER_DISCONNECTED_TRUE" />
+                <action android:name="br.ufc.dc.action.ACTION_POWER_DISCONNECTED_FALSE" />
                 <action android:name="android.intent.action.BATTERY_CHANGED" />
                 <action android:name="android.intent.action.AIRPLANE_MODE" />
                 <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
                 <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
             </intent-filter>
         </receiver>
+
+        <activity
+            android:name=".NotificationHandler"
+            android:label="@string/title_activity_notification_handler" >
+        </activity>
     </application>
 
 </manifest>

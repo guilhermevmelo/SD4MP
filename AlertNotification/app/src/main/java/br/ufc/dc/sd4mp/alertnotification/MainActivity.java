@@ -1,6 +1,7 @@
 package br.ufc.dc.sd4mp.alertnotification;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,14 +13,11 @@ import java.util.Arrays;
 
 
 public class MainActivity extends Activity {
-    private boolean listeners[];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        listeners = new boolean[]{false, false, false, false};
     }
 
 
@@ -46,27 +44,27 @@ public class MainActivity extends Activity {
     }
 
     public void updateReceivers(View view) {
-        boolean checked = ((CheckBox)view).isChecked();
+        boolean checked = ((CheckBox) view).isChecked();
+        Intent intent = new Intent();
 
-        switch(view.getId()) {
+
+        switch (view.getId()) {
             case R.id.cbBattery:
-                listeners[0] = checked;
+                intent.setAction(checked ? "br.ufc.dc.action.BATTERY_CHANGED_TRUE" : "br.ufc.dc.action.BATTERY_CHANGED_FALSE");
                 break;
             case R.id.cbAirplane:
-                listeners[1] = checked;
+                intent.setAction(checked ? "br.ufc.dc.action.AIRPLANE_MODE_TRUE" : "br.ufc.dc.action.AIRPLANE_MODE_FALSE");
                 break;
             case R.id.cbChargerOn:
-                listeners[2] = checked;
+                intent.setAction(checked ? "br.ufc.dc.action.ACTION_POWER_CONNECTED_TRUE" : "br.ufc.dc.action.ACTION_POWER_CONNECTED_FALSE");
                 break;
             case R.id.cbChargerOff:
-                listeners[3] = checked;
+                intent.setAction(checked ? "br.ufc.dc.action.ACTION_POWER_DISCONNECTED_TRUE" : "br.ufc.dc.action.ACTION_POWER_DISCONNECTED_FALSE");
                 break;
             default:
                 Toast.makeText(getApplicationContext(), "You should never see this text =)", Toast.LENGTH_SHORT).show();
         }
-    }
 
-    public boolean getListenerStatus(int whichOne) {
-        return (whichOne >= 0 && whichOne < 4)? listeners[whichOne] : false;
+        sendBroadcast(intent);
     }
 }
