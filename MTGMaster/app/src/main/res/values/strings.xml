@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">MTG Master</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_nova_partida">NovaPartidaActivity</string>
+    <string name="title_activity_rolar_dado">Rolar Dado</string>
+    <string name="title_activity_sensor_movimento">SensorMovimento</string>
+    <string name="title_activity_history">Histórico</string>
+</resources>
